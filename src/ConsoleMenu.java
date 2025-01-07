@@ -178,9 +178,25 @@ public class ConsoleMenu {
                 group.addUnit(newInfantry, army);
             }
             case 2 -> {
-                int transportCapacity = promptInt("Capacité de transport du véhicule");
-                Vehicle newVehicle = new Vehicle(unitName, unitCost, transportCapacity);
-                group.addUnit(newVehicle, army);
+            
+                System.out.println("Type de transport");
+                System.out.println("1. Attaque");
+                System.out.println("2. Transport");
+                int chooseType = promptInt("Votre choix");
+                switch(chooseType){
+                    case 1 -> {
+                        Vehicle newVehicle = new Vehicle(unitName, unitCost,VehicleType.Attaque);
+                        group.addUnit(newVehicle, army);
+                    }
+                    case 2 -> {
+                        int transportCapacity = promptInt("Capacité de transport du véhicule");
+                        Vehicle newVehicle = new Vehicle(unitName, unitCost,VehicleType.Transport, transportCapacity);
+                        group.addUnit(newVehicle, army);
+                    }
+                    default -> System.out.println("Choix invalide. Type de véhicule non créé.");
+                }
+                
+               
             }
             default -> System.out.println("Choix invalide. Unité non créée.");
         }
