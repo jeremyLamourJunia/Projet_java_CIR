@@ -52,7 +52,7 @@ public class Group {
             army.updateUsedPoints(newUnit.getCost());
             System.out.println("Infanterie/Véhicle ajouté(e) avec succès !");
         } else {
-            System.out.println("L'unité coûte trop cher !");
+            System.out.println("L'unité coûte trop cher , dépassement du coup maximum de l'armée '"+army.getName()+"' !");
         }
 
     }
