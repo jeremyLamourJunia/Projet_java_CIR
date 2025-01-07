@@ -50,6 +50,10 @@ public class ConsoleMenu {
         String name = promptString("Nom de l'armée");
         String faction = promptString("Faction");
         int maxPoints = promptInt("Points maximum");
+        while(maxPoints<0){
+            System.out.println("Le nombre de points maximum doit être positif.");
+            maxPoints = promptInt("Points maximum");
+        }   
 
         Army newArmy = new Army(name, maxPoints, faction);
         armyManager.addArmy(newArmy);
@@ -165,7 +169,12 @@ public class ConsoleMenu {
     private void createUnit(Group group, Army army) {
         System.out.println("=== Création d'une unité ===");
         String unitName = promptString("Nom de l'unité");
+
         int unitCost = promptInt("Coût de l'unité");
+        while(unitCost<0){
+            System.out.println("Le coût de l'unité doit être positif.");
+            unitCost = promptInt("Coût de l'unité");
+        }
         System.out.println("Type d'unité :");
         System.out.println("1. Infanterie");
         System.out.println("2. Véhicule");
@@ -190,6 +199,10 @@ public class ConsoleMenu {
                     }
                     case 2 -> {
                         int transportCapacity = promptInt("Capacité de transport du véhicule");
+                        while(transportCapacity<0){
+                            System.out.println("Le capacité du véhicule doit être positif.");
+                            transportCapacity = promptInt("Capacité de transport du véhicule");
+                        }
                         Vehicle newVehicle = new Vehicle(unitName, unitCost,VehicleType.Transport, transportCapacity);
                         group.addUnit(newVehicle, army);
                     }
